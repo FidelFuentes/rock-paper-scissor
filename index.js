@@ -54,34 +54,83 @@ function count(playerSelection, computerSelection) {
     }
 }
 
-let countComputer =  0;
-let countHuman = 0;
 
-function result(countComputer,countHuman){
-    if(countComputer > countHuman){
-        return 'the winner is the computer!'
-    } else if (countComputer < countHuman){
-        return 'You are the winner!'
-    } else{
-        return "It's a tie!"
-    }
+    
 
-}
+    const buttonRock = this.document.querySelector('#rock')
+    buttonRock.addEventListener('click',function(e){
+    const play= computerPlay(1,4);
+    round.textContent=( playRound('rock',play))
+    
+    count('rock',play)
+    countComputerDisplay.textContent= `Computer score: ${countComputer}`;
+    countHumanDisplay.textContent = `Human score: ${countHuman}`;
+    results.textContent=result(countComputer,countHuman);
 
 
-function game(){
-   
 
-    for (let i = 0; i < 6; i++) {
-        if( i===5){
-            console.log(result(countComputer,countHuman))
-        } else{
-        const playerSelection = prompt('choose your option');
-        const computerSelection = computerPlay(1,4);
-        count(playerSelection, computerSelection)
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(countComputer,countHuman)
-     }}
+})
 
-}
-game()
+    const buttonPaper = this.document.querySelector('#paper')
+    buttonPaper.addEventListener('click',function(e){
+        const play= computerPlay(1,4);
+        round.textContent=( playRound('paper',play))
+        
+        count('paper',play)
+        countComputerDisplay.textContent= `Computer score: ${countComputer}`;
+        countHumanDisplay.textContent = `Human score: ${countHuman}`;
+        results.textContent=result(countComputer,countHuman);
+    })
+
+    const buttonScissor= this.document.querySelector('#scissors')
+    buttonScissor.addEventListener('click',function(e){
+        const play= computerPlay(1,4);
+        round.textContent=( playRound('scissors',play))
+        
+        count('scissors',play)
+        countComputerDisplay.textContent= `Computer score: ${countComputer}`;
+        countHumanDisplay.textContent = `Human score: ${countHuman}`;
+        results.textContent=result(countComputer,countHuman);
+    })
+    const container= document.querySelector('#container')
+    const round= document.createElement('div');
+    round.classList.add('round')
+    
+    container.appendChild(round);
+
+
+    let countComputer =  0;
+    let countHuman = 0;
+    
+    function result(countComputer,countHuman){
+
+        if(countComputer ===5){
+            return 'the winner is the computer!'
+        } else if (countHuman ===5)
+            return 'You are the winner!'
+        }
+    
+    
+    const countComputerDisplay= document.createElement('div')
+    countComputerDisplay.classList.add('countComputerDisplay')
+
+
+    container.appendChild(countComputerDisplay)
+
+    const countHumanDisplay= document.createElement('div')
+    countHumanDisplay.classList.add('countHumanDisplay')
+
+
+    container.appendChild(countHumanDisplay)
+
+    const results= document.createElement('div')
+    results.classList.add('results')
+
+
+    container.appendChild(results)
+
+    
+
+
+
+
